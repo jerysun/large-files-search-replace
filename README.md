@@ -27,6 +27,8 @@ Perform multiple search / replace actions at once by using a HashMap<SearchType,
 
 ## IV. Usage:
 
+You'd better create a file folder C:\Tmp in file system, then copy the two files "server.xml" and "best_times.txt" from the directory "resources" in the project to it, this is especially important and convenient when you do the JUnit test.
+
 You can run it in Eclipse, right click on the class LargeFilesSearchReplace.java -- Run As -- Java Application
 
 Or you can export the project as an executable jar file, say, fsr.jar, then run it in the cmd window like this:

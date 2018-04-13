@@ -6,9 +6,9 @@ package com.jsun.type;
  * @version 1.00 2018-04-08
  */
 public enum TypeEnum {
-	PHRASE,
-	PATTERN,
-	WILDCARD,
-	VARIABLE,
-	UNKNOWN;
+  PHRASE,
+  PATTERN,
+  WILDCARD,
+  VARIABLE,
+  UNKNOWN;
 }

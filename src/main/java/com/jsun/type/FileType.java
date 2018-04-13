@@ -6,8 +6,8 @@ package com.jsun.type;
  * @version 1.00 2018-04-08
  */
 public enum FileType {
-	TEXT,
-	XML,
-	HTML,
-	UNKNOWN;
+  TEXT,
+  XML,
+  HTML,
+  UNKNOWN;
 }

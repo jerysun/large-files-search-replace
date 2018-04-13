@@ -6,8 +6,8 @@ package com.jsun.xml;
  *
  */
 public enum XMLPartEnum {
-	ELEMENT_NAME,   //Must be prefixed by <, for example, <Server
-	ATTRIBUTE,//Must be in the format x="y"
-	TEXT_NODE,
-	UNKNOWN;
+  ELEMENT_NAME,   //Must be prefixed by <, for example, <Server
+  ATTRIBUTE,//Must be in the format x="y"
+  TEXT_NODE,
+  UNKNOWN;
 }
