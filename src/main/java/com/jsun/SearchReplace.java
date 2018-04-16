@@ -21,7 +21,7 @@ public interface SearchReplace {
     int idx = path.lastIndexOf('.');
     
     StringBuilder sb = new StringBuilder(path.substring(0, idx));
-    sb.append('_out');
+    sb.append("_out");
     sb.append(path.substring(idx));
     
     return sb.toString();
