@@ -43,6 +43,8 @@ public class XMLSearchReplace extends TextSearchReplace {
         return false;
       }
       break;
+    case UNKNOWN:
+      return false;
     default:
       break;
     }
@@ -75,6 +77,8 @@ public class XMLSearchReplace extends TextSearchReplace {
         return;
       }
       break;
+    case UNKNOWN:
+      return;
     default:
       break;
     }

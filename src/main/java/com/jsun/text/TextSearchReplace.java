@@ -53,6 +53,8 @@ public class TextSearchReplace implements SearchReplace {
         case VARIABLE:
           //TODO
           return false;
+        case UNKNOWN:
+          return false;
         default:
           break;
         }
@@ -88,6 +90,8 @@ public class TextSearchReplace implements SearchReplace {
           return;
         case VARIABLE:
           //TODO
+          return;
+        case UNKNOWN:
           return;
         default:
           break;
