@@ -129,6 +129,8 @@ public class XMLSearchReplace extends TextSearchReplace {
         case VARIABLE:
           //TODO
           return;
+        case UNKNOWN:
+          return;
         default:
           break;
         }
