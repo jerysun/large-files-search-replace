@@ -32,10 +32,18 @@ public class LargeFilesSearchReplace {
       XMLPartEnum xmlPartEnum = XMLPartEnum.UNKNOWN;
       
       System.out.println("Please input the file path:");
-      while(((path = sc.next().trim())).isEmpty()) {
-        System.out.println("Please input the file path:");
+      int idx = -1;
+      while(true) {
+        if ((path = sc.next().trim()).isEmpty() || 
+            (idx = path.lastIndexOf('.')) == -1 ||
+            idx == path.length() - 1) {
+          System.out.println("Please input the file path:");
+          continue;
+        } else {
+          break;
+        }
       }
-      int idx = path.lastIndexOf('.');
+      
       String extensionName = path.substring(++idx);
       if (extensionName.toLowerCase().equals("txt")) {
         fileType = FileType.TEXT;
@@ -70,6 +78,8 @@ public class LargeFilesSearchReplace {
             System.out.println("Please input the XML part type(1: element name 2. attribute 3. text node), just input the number:");
           }
         }
+      } else {
+        fileType = FileType.TEXT;//TODO, now just set it as default if it's not xml
       }
       
       System.out.println("Please input the string you want to search:");

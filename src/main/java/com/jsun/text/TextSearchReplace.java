@@ -60,7 +60,7 @@ public class TextSearchReplace implements SearchReplace {
         }
       }
     } catch (Exception e) {
-      //e.printStackTrace();
+      e.printStackTrace();
       return false;
     }
     return false;
