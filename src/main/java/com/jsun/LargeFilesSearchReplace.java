@@ -83,32 +83,32 @@ public class LargeFilesSearchReplace {
       }
       
       System.out.println("Please input the string you want to search:");
-      while (true) {
-        if (((searchString = sc.next()).trim()).isEmpty()) {
+      searchString = sc.next();
+      searchString = searchString.trim();
+      
+      switch (xmlPartEnum) {
+      case ELEMENT_NAME:
+        while (!searchString.contains("<")) {
+          System.out.println("Error! The xml element name must be prefixed by a <");
           System.out.println("Please input the string you want to search:");
-          continue;
-        } else { // verify the xml syntax
-          if (xmlPartEnum == XMLPartEnum.ELEMENT_NAME) {
-            while (!searchString.contains("<")) {
-              System.out.println("Error! The xml element name must be prefixed by a <");
-              System.out.println("Please input the string you want to search:");
-              searchString = sc.next().trim();
-            }
-            
-            if (searchString.charAt(searchString.length()-1) == '>') { //user friendly for open tag
-              searchString = searchString.substring(0, searchString.length()-1);
-            }
-            break;
-          } else if (xmlPartEnum == XMLPartEnum.ATTRIBUTE && !searchString.contains("=")) {
-            System.out.println("Error! The xml attribute must contain a =");
-            System.out.println("Please input the string you want to search:");
-            searchString = sc.next().trim();
-          } else {
-            break;
-          }
+          searchString = sc.next().trim();
         }
-      }
         
+        if (searchString.charAt(searchString.length()-1) == '>') { //user friendly for open tag
+          searchString = searchString.substring(0, searchString.length()-1);
+        }
+        break;
+      case ATTRIBUTE:
+        while (!searchString.contains("=")) {
+          System.out.println("Error! The xml attribute must contain a =");
+          System.out.println("Please input the string you want to search:");
+          searchString = sc.next().trim();
+        }
+        break;
+      default:
+        break;
+      } //end of switch
+
       System.out.println("Please input the search type(1: Text phrease 2. Pattern), just input the number:");
       while(true) {
         try {
@@ -131,25 +131,27 @@ public class LargeFilesSearchReplace {
       System.out.println("Please input the replacement string(if you input no, that means you skip the replace operation):");
       String replaceString = sc.next().trim();
       if (!replaceString.equals("no")) {
-        while(true) {
-          if (xmlPartEnum == XMLPartEnum.ELEMENT_NAME) {
-            while (!replaceString.contains("<")) {
-              System.out.println("Error! The xml element name must be prefixed by a <");
-              System.out.println("Please input the replacement string if you want:");
-              replaceString = sc.next().trim();
-            }
-            
-            if (replaceString.charAt(replaceString.length()-1) == '>') { //user friendly for open tag
-               replaceString = replaceString.substring(0, replaceString.length()-1);
-            }
-            break;
-          } else if (xmlPartEnum == XMLPartEnum.ATTRIBUTE && !replaceString.contains("=")) {
+        switch (xmlPartEnum) {
+        case ELEMENT_NAME:
+          while (!replaceString.contains("<")) {
+            System.out.println("Error! The xml element name must be prefixed by a <");
+            System.out.println("Please input the replacement string if you want:");
+            replaceString = sc.next().trim();
+          }
+          
+          if (replaceString.charAt(replaceString.length()-1) == '>') { //user friendly for open tag
+             replaceString = replaceString.substring(0, replaceString.length()-1);
+          }
+          break;
+        case ATTRIBUTE:
+          while (!replaceString.contains("=")) {
             System.out.println("Error! The xml attribute must contain a =");
             System.out.println("Please input the replacement string if you want:");
             replaceString = sc.next().trim();
-          } else {
-            break;
           }
+          break;
+        default:
+          break;
         }
       }
       
@@ -158,6 +160,8 @@ public class LargeFilesSearchReplace {
         searchReplace = new TextSearchReplace(path, searchType);
       } else if (fileType == FileType.XML) {
         searchReplace = new XMLSearchReplace(path, searchType, xmlPartEnum);
+      } else { //JSUN
+        return;
       }
         
       boolean found = false;

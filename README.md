@@ -13,7 +13,7 @@ The design of the program aims to easily maintain and extend, so other developer
 + The program can handle large files efficiently, e.g. gigabytes of data.
 + The memory consumption is less than 200 megabytes when processing gigabytes large files.
 + When the input xml file is always well formed, the output xml file is still well formed.
-+ In case of xml, he following tokens can be searched and replaced: element names, attribute values, text nodes.
++ In case of xml, the following tokens can be searched and replaced: element names, attribute values, text nodes.
 + The program has an user-friendly interactive command-line user interface.
 + Most errors (e.g. in user input) are timely and appropriately handled, a few others are done by throwing exceptions.
 + It is based on the file extension names (txt or xml) to determine file type.
